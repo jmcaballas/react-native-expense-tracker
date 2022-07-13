@@ -10,7 +10,11 @@ const CashFlowDetail = ({ route }: { route: any }) => {
       <View style={styles.expenseContainer}>
         <Text style={styles.expenseAmount}>Php {item.amount.toFixed(2)}</Text>
         <Text style={styles.expenseName}>{item.name}</Text>
-        <Text style={styles.expenseDetail}>{item.description}</Text>
+        {item.description ? (
+          <Text style={styles.expenseDetail}>{item.description}</Text>
+        ) : (
+          <></>
+        )}
         <Text style={styles.expenseDetail}>{item.date}</Text>
       </View>
       <StatusBar style="light" />
