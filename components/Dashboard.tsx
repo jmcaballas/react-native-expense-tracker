@@ -33,7 +33,7 @@ const Dashboard = ({ navigation }: { navigation: any }) => {
       id: uuid.v4(),
       amount: 1000,
       name: "Globe",
-      description: "June Billing",
+      description: "",
       category: "Bills",
       date: "July 13, 2022",
     },
@@ -67,7 +67,11 @@ const Dashboard = ({ navigation }: { navigation: any }) => {
             <View style={styles.expenseContainer}>
               <View>
                 <Text style={styles.expenseName}>{item.name}</Text>
-                <Text style={styles.expenseDetail}>{item.description}</Text>
+                {item.description ? (
+                  <Text style={styles.expenseDetail}>{item.description}</Text>
+                ) : (
+                  <></>
+                )}
                 <Text style={styles.expenseDetail}>{item.date}</Text>
               </View>
               <View>
