@@ -1,5 +1,7 @@
 import { StyleSheet, Text, View } from "react-native";
 
+import MaterialIcons from "@expo/vector-icons/MaterialIcons";
+
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 const Stack = createNativeStackNavigator();
@@ -18,8 +20,31 @@ export default function App() {
           headerTintColor: "white",
         }}
       >
-        {/* <Stack.Screen name="Dashboard" component={Dashboard} /> */}
-        <Stack.Screen name="CashFlowCreate" component={CashFlowCreate} />
+        <Stack.Screen
+          name="Dashboard"
+          component={Dashboard}
+          options={({ navigation, route }) => ({
+            title: "Dashboard",
+            headerLeft: () => (
+              <MaterialIcons
+                name="menu"
+                size={24}
+                color="white"
+                style={{ marginRight: 15 }}
+                // onPress={() => navigation.navigate("Post")}
+              />
+            ),
+            headerRight: () => (
+              <MaterialIcons
+                name="add"
+                size={24}
+                color="white"
+                // onPress={() => navigation.navigate("Post")}
+              />
+            ),
+          })}
+        />
+        {/* <Stack.Screen name="CashFlowCreate" component={CashFlowCreate} /> */}
       </Stack.Navigator>
     </NavigationContainer>
   );
