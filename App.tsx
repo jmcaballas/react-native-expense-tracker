@@ -23,7 +23,7 @@ export default function App() {
         <Stack.Screen
           name="Dashboard"
           component={Dashboard}
-          options={({ navigation, route }) => ({
+          options={({ navigation }) => ({
             title: "Dashboard",
             headerLeft: () => (
               <MaterialIcons
@@ -31,7 +31,7 @@ export default function App() {
                 size={24}
                 color="white"
                 style={{ marginRight: 15 }}
-                // onPress={() => navigation.navigate("Post")}
+                // onPress={() => navigation.navigate("Drawer")}
               />
             ),
             headerRight: () => (
@@ -39,12 +39,12 @@ export default function App() {
                 name="add"
                 size={24}
                 color="white"
-                // onPress={() => navigation.navigate("Post")}
+                onPress={() => navigation.navigate("CashFlowCreate")}
               />
             ),
           })}
         />
-        {/* <Stack.Screen name="CashFlowCreate" component={CashFlowCreate} /> */}
+        <Stack.Screen name="CashFlowCreate" component={CashFlowCreate} />
       </Stack.Navigator>
     </NavigationContainer>
   );
