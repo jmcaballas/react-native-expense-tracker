@@ -50,14 +50,6 @@ export default function App() {
           component={CashFlowCreate}
           options={({ navigation }) => ({
             title: "CashFlowCreate",
-            headerRight: () => (
-              <MaterialIcons
-                name="check"
-                size={24}
-                color="white"
-                // onPress={() => navigation.navigate("CashFlowCreate")}
-              />
-            ),
           })}
         />
         <Stack.Screen
