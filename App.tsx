@@ -5,6 +5,7 @@ import { createNativeStackNavigator } from "@react-navigation/native-stack";
 const Stack = createNativeStackNavigator();
 
 import CashFlowCreate from "./components/CashFlowCreate";
+import Dashboard from "./components/Dashboard";
 
 export default function App() {
   return (
@@ -17,6 +18,7 @@ export default function App() {
           headerTintColor: "white",
         }}
       >
+        <Stack.Screen name="Dashboard" component={Dashboard} />
         <Stack.Screen name="CashFlowCreate" component={CashFlowCreate} />
       </Stack.Navigator>
     </NavigationContainer>
