@@ -7,10 +7,12 @@ const CashFlowDetail = ({ route }: { route: any }) => {
   const { item } = route.params;
   return (
     <View style={styles.container}>
-      <Text style={styles.expenseName}>{item.amount}</Text>
-      <Text style={styles.expenseDetail}>{item.name}</Text>
-      <Text style={styles.expenseDetail}>{item.description}</Text>
-      <Text style={styles.expenseDetail}>{item.date}</Text>
+      <View style={styles.expenseContainer}>
+        <Text style={styles.expenseAmount}>Php {item.amount.toFixed(2)}</Text>
+        <Text style={styles.expenseName}>{item.name}</Text>
+        <Text style={styles.expenseDetail}>{item.description}</Text>
+        <Text style={styles.expenseDetail}>{item.date}</Text>
+      </View>
       <StatusBar style="light" />
     </View>
   );
@@ -21,27 +23,25 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: "#232a44",
   },
-  budget: {
-    color: "white",
-    fontSize: 20,
-    fontWeight: "bold",
-    padding: 20,
-  },
   expenseContainer: {
-    paddingVertical: 10,
+    paddingVertical: 20,
     paddingHorizontal: 20,
     marginBottom: 5,
-    flexDirection: "row",
-    justifyContent: "space-between",
+    justifyContent: "center",
   },
   expenseName: {
     color: "white",
+    fontSize: 20,
+    marginBottom: 5,
   },
   expenseDetail: {
     color: "#777e90",
+    fontSize: 16,
   },
   expenseAmount: {
     color: "#4ea27f",
+    fontSize: 20,
+    marginBottom: 5,
   },
 });
 
