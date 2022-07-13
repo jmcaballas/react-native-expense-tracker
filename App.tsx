@@ -44,7 +44,21 @@ export default function App() {
             ),
           })}
         />
-        <Stack.Screen name="CashFlowCreate" component={CashFlowCreate} />
+        <Stack.Screen
+          name="CashFlowCreate"
+          component={CashFlowCreate}
+          options={({ navigation }) => ({
+            title: "CashFlowCreate",
+            headerRight: () => (
+              <MaterialIcons
+                name="check"
+                size={24}
+                color="white"
+                // onPress={() => navigation.navigate("CashFlowCreate")}
+              />
+            ),
+          })}
+        />
       </Stack.Navigator>
     </NavigationContainer>
   );
