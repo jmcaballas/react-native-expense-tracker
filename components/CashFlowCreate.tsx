@@ -1,8 +1,10 @@
 import {
+  Keyboard,
   StyleSheet,
   Text,
   TextInput,
   TouchableOpacity,
+  TouchableWithoutFeedback,
   View,
 } from "react-native";
 import React, { useState } from "react";
@@ -22,39 +24,41 @@ const CashFlowCreate = () => {
   };
 
   return (
-    <View style={styles.container}>
-      <TextInput
-        keyboardType="number-pad"
-        style={styles.input}
-        placeholder="Amount"
-        placeholderTextColor="#777e90"
-      />
-      <TextInput
-        style={styles.input}
-        placeholder="Name"
-        placeholderTextColor="#777e90"
-      />
-      <TextInput
-        style={styles.input}
-        placeholder="Description"
-        placeholderTextColor="#777e90"
-      />
-      <TextInput
-        style={styles.input}
-        placeholder="Category"
-        placeholderTextColor="#777e90"
-      />
-      <TouchableOpacity
-        style={styles.datePicker}
-        onPress={() => setShowDatePicker(true)}
-      >
-        <Text style={styles.dateText}>{date.toString().slice(4, 15)}</Text>
-      </TouchableOpacity>
-      {showDatePicker && (
-        <DateTimePicker value={date} mode={"date"} onChange={onChange} />
-      )}
-      <StatusBar style="light" />
-    </View>
+    <TouchableWithoutFeedback onPress={() => Keyboard.dismiss()}>
+      <View style={styles.container}>
+        <TextInput
+          keyboardType="number-pad"
+          style={styles.input}
+          placeholder="Amount"
+          placeholderTextColor="#777e90"
+        />
+        <TextInput
+          style={styles.input}
+          placeholder="Name"
+          placeholderTextColor="#777e90"
+        />
+        <TextInput
+          style={styles.input}
+          placeholder="Description"
+          placeholderTextColor="#777e90"
+        />
+        <TextInput
+          style={styles.input}
+          placeholder="Category"
+          placeholderTextColor="#777e90"
+        />
+        <TouchableOpacity
+          style={styles.datePicker}
+          onPress={() => setShowDatePicker(true)}
+        >
+          <Text style={styles.dateText}>{date.toString().slice(4, 15)}</Text>
+        </TouchableOpacity>
+        {showDatePicker && (
+          <DateTimePicker value={date} mode={"date"} onChange={onChange} />
+        )}
+        <StatusBar style="light" />
+      </View>
+    </TouchableWithoutFeedback>
   );
 };
 
