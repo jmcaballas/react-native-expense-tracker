@@ -18,7 +18,7 @@ export default function App() {
           headerTintColor: "white",
         }}
       >
-        <Stack.Screen name="Dashboard" component={Dashboard} />
+        {/* <Stack.Screen name="Dashboard" component={Dashboard} /> */}
         <Stack.Screen name="CashFlowCreate" component={CashFlowCreate} />
       </Stack.Navigator>
     </NavigationContainer>
