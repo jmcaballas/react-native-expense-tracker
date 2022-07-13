@@ -1,12 +1,18 @@
-import { StatusBar } from "expo-status-bar";
 import { StyleSheet, Text, View } from "react-native";
+
+import { NavigationContainer } from "@react-navigation/native";
+import { createNativeStackNavigator } from "@react-navigation/native-stack";
+const Stack = createNativeStackNavigator();
+
+import CashFlowCreate from "./components/CashFlowCreate";
 
 export default function App() {
   return (
-    <View style={styles.container}>
-      <Text>Expense Tracker</Text>
-      <StatusBar style="auto" />
-    </View>
+    <NavigationContainer>
+      <Stack.Navigator>
+        <Stack.Screen name="CashFlowCreate" component={CashFlowCreate} />
+      </Stack.Navigator>
+    </NavigationContainer>
   );
 }
 
