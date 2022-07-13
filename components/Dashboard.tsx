@@ -1,5 +1,5 @@
 import { FlatList, StyleSheet, Text, View } from "react-native";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 
 import { StatusBar } from "expo-status-bar";
 
@@ -33,10 +33,24 @@ const Dashboard = () => {
     },
   ]);
 
+  const [totalExpenses, setTotalExpenses] = useState(0);
+
+  const calculateTotalExpenses = () => {
+    let total = 0;
+    for (let i = 0; i < expenses.length; i++) {
+      total += Number(expenses[i].amount);
+    }
+    setTotalExpenses(total);
+  };
+
+  useEffect(() => {
+    calculateTotalExpenses();
+  }, []);
+
   return (
     <View style={styles.container}>
+      <Text style={styles.budget}>Budget: Php {totalExpenses.toFixed(2)}</Text>
       <FlatList
-        // style={styles.container}
         data={expenses}
         renderItem={({ item }) => {
           return (
@@ -65,6 +79,12 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: "#232a44",
+  },
+  budget: {
+    color: "white",
+    fontSize: 20,
+    fontWeight: "bold",
+    padding: 20,
   },
   expenseContainer: {
     paddingVertical: 10,
