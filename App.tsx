@@ -9,7 +9,14 @@ import CashFlowCreate from "./components/CashFlowCreate";
 export default function App() {
   return (
     <NavigationContainer>
-      <Stack.Navigator>
+      <Stack.Navigator
+        screenOptions={{
+          headerStyle: {
+            backgroundColor: "#101324",
+          },
+          headerTintColor: "white",
+        }}
+      >
         <Stack.Screen name="CashFlowCreate" component={CashFlowCreate} />
       </Stack.Navigator>
     </NavigationContainer>
