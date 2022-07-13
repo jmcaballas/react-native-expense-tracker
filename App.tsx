@@ -7,6 +7,7 @@ import { createNativeStackNavigator } from "@react-navigation/native-stack";
 const Stack = createNativeStackNavigator();
 
 import CashFlowCreate from "./components/CashFlowCreate";
+import CashFlowDetail from "./components/CashFlowDetail";
 import Dashboard from "./components/Dashboard";
 
 export default function App() {
@@ -55,6 +56,21 @@ export default function App() {
                 size={24}
                 color="white"
                 // onPress={() => navigation.navigate("CashFlowCreate")}
+              />
+            ),
+          })}
+        />
+        <Stack.Screen
+          name="CashFlowDetail"
+          component={CashFlowDetail}
+          options={({ navigation }) => ({
+            title: "CashFlowDetail",
+            headerRight: () => (
+              <MaterialIcons
+                name="edit"
+                size={24}
+                color="white"
+                onPress={() => navigation.navigate("CashFlowCreate")}
               />
             ),
           })}

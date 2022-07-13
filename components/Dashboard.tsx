@@ -1,11 +1,17 @@
-import { FlatList, StyleSheet, Text, View } from "react-native";
+import {
+  FlatList,
+  StyleSheet,
+  Text,
+  TouchableOpacity,
+  View,
+} from "react-native";
 import React, { useEffect, useState } from "react";
 
 import { StatusBar } from "expo-status-bar";
 
 import uuid from "react-native-uuid";
 
-const Dashboard = () => {
+const Dashboard = ({ navigation }: { navigation: any }) => {
   const [expenses, setExpenses] = useState([
     {
       id: uuid.v4(),
@@ -52,8 +58,12 @@ const Dashboard = () => {
       <Text style={styles.budget}>Budget: Php {totalExpenses.toFixed(2)}</Text>
       <FlatList
         data={expenses}
-        renderItem={({ item }) => {
-          return (
+        renderItem={({ item }) => (
+          <TouchableOpacity
+            onPress={() =>
+              navigation.navigate("CashFlowDetail", { item: item })
+            }
+          >
             <View style={styles.expenseContainer}>
               <View>
                 <Text style={styles.expenseName}>{item.name}</Text>
@@ -66,8 +76,8 @@ const Dashboard = () => {
                 </Text>
               </View>
             </View>
-          );
-        }}
+          </TouchableOpacity>
+        )}
         keyExtractor={(item) => item.id.toString()}
       />
       <StatusBar style="light" />
