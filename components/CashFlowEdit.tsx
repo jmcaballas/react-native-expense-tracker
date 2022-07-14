@@ -51,8 +51,21 @@ const CashFlowEdit = ({ route }: { route: any }) => {
   };
 
   const deleteExpense = (currentId: string) => {
-    const newExpenses = expenses.filter((item: any) => item.id != currentId);
-    setExpenses(newExpenses);
+    Alert.alert("Delete?", "Are you sure you want to delete?", [
+      {
+        text: "Cancel",
+      },
+      {
+        text: "Delete",
+        onPress: () => {
+          const newExpenses = expenses.filter(
+            (item: any) => item.id != currentId
+          );
+          setExpenses(newExpenses);
+          navigation.navigate("Dashboard");
+        },
+      },
+    ]);
   };
 
   const editHandler = () => {
@@ -64,8 +77,6 @@ const CashFlowEdit = ({ route }: { route: any }) => {
       Alert.alert("Error!", "Name is required.");
       return;
     }
-
-    deleteExpense(id);
 
     const editExpense = {
       id: uuid.v4(),
@@ -126,6 +137,12 @@ const CashFlowEdit = ({ route }: { route: any }) => {
             onChange={showDatePickerHandler}
           />
         )}
+        <TouchableOpacity
+          style={styles.deleteBtn}
+          onPress={() => deleteExpense(id)}
+        >
+          <Text style={styles.deleteText}>DELETE</Text>
+        </TouchableOpacity>
         <StatusBar style="light" />
       </View>
     </TouchableWithoutFeedback>
@@ -160,6 +177,19 @@ const styles = StyleSheet.create({
   },
   dateText: {
     color: "white",
+  },
+  deleteBtn: {
+    borderStyle: "solid",
+    borderRadius: 10,
+    backgroundColor: "#eb4f74",
+    marginHorizontal: 20,
+    marginTop: 20,
+    paddingHorizontal: 15,
+    paddingVertical: 15,
+  },
+  deleteText: {
+    color: "white",
+    textAlign: "center",
   },
 });
 
