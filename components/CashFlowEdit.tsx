@@ -37,7 +37,7 @@ const CashFlowEdit = ({ route }: { route: any }) => {
   useLayoutEffect(() => {
     navigation.setOptions({
       headerRight: () => (
-        <TouchableOpacity onPress={editHandler}>
+        <TouchableOpacity onPress={() => editHandler(id)}>
           <MaterialIcons name="check" size={24} color="white" />
         </TouchableOpacity>
       ),
@@ -68,7 +68,7 @@ const CashFlowEdit = ({ route }: { route: any }) => {
     ]);
   };
 
-  const editHandler = () => {
+  const editHandler = (currentId: string) => {
     if (!amount) {
       Alert.alert("Error!", "Amount is required.");
       return;
@@ -78,17 +78,24 @@ const CashFlowEdit = ({ route }: { route: any }) => {
       return;
     }
 
-    const editExpense = {
-      id: uuid.v4(),
-      amount: amount,
-      name: name,
-      description: description,
-      category: category,
-      date: date,
-    };
-    setExpenses([editExpense, ...expenses]);
+    const newExpenses = expenses.map((item: { id: string }) => {
+      if (item.id === currentId) {
+        return {
+          id: currentId,
+          amount: amount,
+          name: name,
+          description: description,
+          category: category,
+          date: date,
+        };
+      } else {
+        return item;
+      }
+    });
+
+    setExpenses(newExpenses);
     Alert.alert("Success!", "Item was added.");
-    navigation.goBack();
+    navigation.navigate("Dashboard");
   };
 
   return (
