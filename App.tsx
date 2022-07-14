@@ -4,7 +4,9 @@ import { useState } from "react";
 import MaterialIcons from "@expo/vector-icons/MaterialIcons";
 
 import { NavigationContainer } from "@react-navigation/native";
+import { createDrawerNavigator } from "@react-navigation/drawer";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
+const Drawer = createDrawerNavigator();
 const Stack = createNativeStackNavigator();
 
 import CashFlowCreate from "./components/CashFlowCreate";
@@ -13,6 +15,14 @@ import CashFlowDetail from "./components/CashFlowDetail";
 import Dashboard from "./components/Dashboard";
 import { IExpenses } from "./types/Types";
 import Context from "./context/Context";
+
+const DashboardStack = () => {
+  return (
+    <Drawer.Navigator>
+      <Drawer.Screen name="DashboardStack" component={Dashboard} />
+    </Drawer.Navigator>
+  );
+};
 
 export default function App() {
   const [expenses, setExpenses] = useState<IExpenses[]>([]);
