@@ -7,8 +7,6 @@ import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 const Stack = createNativeStackNavigator();
 
-import uuid from "react-native-uuid";
-
 import CashFlowCreate from "./components/CashFlowCreate";
 import CashFlowEdit from "./components/CashFlowEdit";
 import CashFlowDetail from "./components/CashFlowDetail";
@@ -17,33 +15,7 @@ import { IExpenses } from "./types/Types";
 import Context from "./context/Context";
 
 export default function App() {
-  const [expenses, setExpenses] = useState<any>([
-    // {
-    //   id: uuid.v4(),
-    //   amount: "500",
-    //   name: "Buffet",
-    //   description: "Yummy!",
-    //   category: "Food",
-    //   date: "2022-07-14T09:09:24.983Z",
-    // },
-    // {
-    //   id: uuid.v4(),
-    //   amount: "200",
-    //   name: "Grab",
-    //   description: "Home to Work",
-    //   category: "Transportation",
-    //   date: "2022-07-14T09:09:24.983Z",
-    // },
-    // {
-    //   id: uuid.v4(),
-    //   amount: "1000",
-    //   name: "Globe",
-    //   description: "",
-    //   category: "Bills",
-    //   date: "2022-07-14T09:09:24.983Z",
-    // },
-  ]);
-  const [expenseId, setExpenseId] = useState<any>(null);
+  const [expenses, setExpenses] = useState<IExpenses[]>([]);
 
   return (
     <Context.Provider value={[expenses, setExpenses]}>
