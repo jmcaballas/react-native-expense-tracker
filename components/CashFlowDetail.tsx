@@ -1,10 +1,27 @@
-import { FlatList, StyleSheet, Text, View } from "react-native";
-import React from "react";
+import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
+import React, { useLayoutEffect } from "react";
+
+import { useNavigation } from "@react-navigation/native";
 
 import { StatusBar } from "expo-status-bar";
+import MaterialIcons from "@expo/vector-icons/MaterialIcons";
 
 const CashFlowDetail = ({ route }: { route: any }) => {
   const { item } = route.params;
+  const navigation = useNavigation<any>();
+
+  useLayoutEffect(() => {
+    navigation.setOptions({
+      headerRight: () => (
+        <TouchableOpacity
+          onPress={() => navigation.navigate("CashFlowEdit", { item: item })}
+        >
+          <MaterialIcons name="edit" size={24} color="white" />
+        </TouchableOpacity>
+      ),
+    });
+  }, [navigation]);
+
   return (
     <View style={styles.container}>
       <View style={styles.expenseContainer}>

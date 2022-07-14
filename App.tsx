@@ -10,6 +10,7 @@ const Stack = createNativeStackNavigator();
 import uuid from "react-native-uuid";
 
 import CashFlowCreate from "./components/CashFlowCreate";
+import CashFlowEdit from "./components/CashFlowEdit";
 import CashFlowDetail from "./components/CashFlowDetail";
 import Dashboard from "./components/Dashboard";
 import { IExpenses } from "./types/Types";
@@ -19,29 +20,30 @@ export default function App() {
   const [expenses, setExpenses] = useState<any>([
     {
       id: uuid.v4(),
-      amount: 500,
+      amount: "500",
       name: "Buffet",
       description: "Yummy!",
       category: "Food",
-      date: "July 13, 2022",
+      date: "July 13 2022",
     },
     {
       id: uuid.v4(),
-      amount: 200,
+      amount: "200",
       name: "Grab",
       description: "Home to Work",
       category: "Transportation",
-      date: "July 13, 2022",
+      date: "July 13 2022",
     },
     {
       id: uuid.v4(),
-      amount: 1000,
+      amount: "1000",
       name: "Globe",
       description: "",
       category: "Bills",
-      date: "July 13, 2022",
+      date: "July 13 2022",
     },
   ]);
+  const [expenseId, setExpenseId] = useState<any>(null);
 
   return (
     <Context.Provider value={[expenses, setExpenses]}>
@@ -86,18 +88,25 @@ export default function App() {
             })}
           />
           <Stack.Screen
+            name="CashFlowEdit"
+            component={CashFlowEdit}
+            options={({ navigation }) => ({
+              title: "CashFlowEdit",
+            })}
+          />
+          <Stack.Screen
             name="CashFlowDetail"
             component={CashFlowDetail}
             options={({ navigation }) => ({
               title: "CashFlowDetail",
-              headerRight: () => (
-                <MaterialIcons
-                  name="edit"
-                  size={24}
-                  color="white"
-                  onPress={() => navigation.navigate("CashFlowCreate")}
-                />
-              ),
+              // headerRight: () => (
+              //   <MaterialIcons
+              //     name="edit"
+              //     size={24}
+              //     color="white"
+              //     onPress={() => navigation.navigate("CashFlowEdit")}
+              //   />
+              // ),
             })}
           />
         </Stack.Navigator>
