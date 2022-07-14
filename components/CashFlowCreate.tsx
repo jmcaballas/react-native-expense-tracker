@@ -77,6 +77,7 @@ const CashFlowCreate = ({ navigation }: { navigation: any }) => {
           placeholder="Description"
           placeholderTextColor="#777e90"
           onChangeText={(value) => setDescription(value)}
+          multiline={true}
         />
         <TextInput
           style={styles.input}
@@ -116,7 +117,7 @@ const styles = StyleSheet.create({
     backgroundColor: "#1b2036",
     marginHorizontal: 20,
     marginTop: 20,
-    paddingLeft: 15,
+    paddingHorizontal: 15,
     paddingVertical: 10,
   },
   datePicker: {
@@ -126,7 +127,7 @@ const styles = StyleSheet.create({
     backgroundColor: "#1b2036",
     marginHorizontal: 20,
     marginTop: 20,
-    paddingLeft: 15,
+    paddingHorizontal: 15,
     paddingVertical: 15,
   },
   dateText: {
