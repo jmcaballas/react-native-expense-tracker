@@ -1,4 +1,4 @@
-import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
+import { LogBox, StyleSheet, Text, TouchableOpacity, View } from "react-native";
 import React, { useLayoutEffect } from "react";
 
 import { useNavigation } from "@react-navigation/native";
@@ -71,5 +71,9 @@ const styles = StyleSheet.create({
     marginBottom: 5,
   },
 });
+
+LogBox.ignoreLogs([
+  "Non-serializable values were found in the navigation state",
+]);
 
 export default CashFlowDetail;
