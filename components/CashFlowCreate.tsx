@@ -1,4 +1,5 @@
 import {
+  Alert,
   Keyboard,
   StyleSheet,
   Text,
@@ -44,6 +45,14 @@ const CashFlowCreate = ({ navigation }: { navigation: any }) => {
   };
 
   const createHandler = () => {
+    if (!amount) {
+      Alert.alert("Error!", "Amount is required.");
+      return;
+    }
+    if (!name) {
+      Alert.alert("Error!", "Name is required.");
+      return;
+    }
     const newExpense = {
       id: uuid.v4(),
       amount: amount,
@@ -53,6 +62,7 @@ const CashFlowCreate = ({ navigation }: { navigation: any }) => {
       date: date.toString().slice(4, 15),
     };
     setExpenses([newExpense, ...expenses]);
+    Alert.alert("Success!", "Item was added.");
     navigation.goBack();
   };
 
