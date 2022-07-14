@@ -5,39 +5,14 @@ import {
   TouchableOpacity,
   View,
 } from "react-native";
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useContext } from "react";
 
 import { StatusBar } from "expo-status-bar";
 
-import uuid from "react-native-uuid";
+import Context from "../context/Context";
 
 const Dashboard = ({ navigation }: { navigation: any }) => {
-  const [expenses, setExpenses] = useState([
-    {
-      id: uuid.v4(),
-      amount: 500,
-      name: "Buffet",
-      description: "Yummy!",
-      category: "Food",
-      date: "July 13, 2022",
-    },
-    {
-      id: uuid.v4(),
-      amount: 200,
-      name: "Grab",
-      description: "Home to Work",
-      category: "Transportation",
-      date: "July 13, 2022",
-    },
-    {
-      id: uuid.v4(),
-      amount: 1000,
-      name: "Globe",
-      description: "",
-      category: "Bills",
-      date: "July 13, 2022",
-    },
-  ]);
+  const [expenses, setExpenses] = useContext(Context);
 
   const [totalExpenses, setTotalExpenses] = useState(0);
 
@@ -51,7 +26,7 @@ const Dashboard = ({ navigation }: { navigation: any }) => {
 
   useEffect(() => {
     calculateTotalExpenses();
-  }, []);
+  }, [expenses]);
 
   return (
     <View style={styles.container}>
@@ -76,7 +51,7 @@ const Dashboard = ({ navigation }: { navigation: any }) => {
               </View>
               <View>
                 <Text style={styles.expenseAmount}>
-                  Php {item.amount.toFixed(2)}
+                  Php {Number(item.amount).toFixed(2)}
                 </Text>
               </View>
             </View>

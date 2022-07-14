@@ -8,7 +8,9 @@ const CashFlowDetail = ({ route }: { route: any }) => {
   return (
     <View style={styles.container}>
       <View style={styles.expenseContainer}>
-        <Text style={styles.expenseAmount}>Php {item.amount.toFixed(2)}</Text>
+        <Text style={styles.expenseAmount}>
+          Php {Number(item.amount).toFixed(2)}
+        </Text>
         <Text style={styles.expenseName}>{item.name}</Text>
         {item.description ? (
           <Text style={styles.expenseDetail}>{item.description}</Text>

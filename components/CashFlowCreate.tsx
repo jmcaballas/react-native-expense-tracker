@@ -7,7 +7,7 @@ import {
   TouchableWithoutFeedback,
   View,
 } from "react-native";
-import React, { useLayoutEffect, useState } from "react";
+import React, { useContext, useLayoutEffect, useState } from "react";
 
 import { StatusBar } from "expo-status-bar";
 import MaterialIcons from "@expo/vector-icons/MaterialIcons";
@@ -16,7 +16,10 @@ import uuid from "react-native-uuid";
 
 import DateTimePicker from "@react-native-community/datetimepicker";
 
+import Context from "../context/Context";
+
 const CashFlowCreate = ({ navigation }: { navigation: any }) => {
+  const [expenses, setExpenses] = useContext(Context);
   const [amount, setAmount] = useState("");
   const [name, setName] = useState("");
   const [description, setDescription] = useState("");
@@ -47,10 +50,10 @@ const CashFlowCreate = ({ navigation }: { navigation: any }) => {
       name: name,
       description: description,
       category: category,
-      date: date,
+      date: date.toString().slice(4, 15),
     };
-
-    console.log(newExpense);
+    setExpenses([newExpense, ...expenses]);
+    navigation.goBack();
   };
 
   return (
