@@ -24,7 +24,7 @@ export default function App() {
       name: "Buffet",
       description: "Yummy!",
       category: "Food",
-      date: "July 13 2022",
+      date: "2022-07-14T09:09:24.983Z",
     },
     {
       id: uuid.v4(),
@@ -32,7 +32,7 @@ export default function App() {
       name: "Grab",
       description: "Home to Work",
       category: "Transportation",
-      date: "July 13 2022",
+      date: "2022-07-14T09:09:24.983Z",
     },
     {
       id: uuid.v4(),
@@ -40,7 +40,7 @@ export default function App() {
       name: "Globe",
       description: "",
       category: "Bills",
-      date: "July 13 2022",
+      date: "2022-07-14T09:09:24.983Z",
     },
   ]);
   const [expenseId, setExpenseId] = useState<any>(null);

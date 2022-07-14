@@ -17,6 +17,8 @@ import uuid from "react-native-uuid";
 
 import DateTimePicker from "@react-native-community/datetimepicker";
 
+import moment from "moment";
+
 import Context from "../context/Context";
 
 const CashFlowCreate = ({ navigation }: { navigation: any }) => {
@@ -59,7 +61,7 @@ const CashFlowCreate = ({ navigation }: { navigation: any }) => {
       name: name,
       description: description,
       category: category,
-      date: date.toString().slice(4, 15),
+      date: date,
     };
     setExpenses([newExpense, ...expenses]);
     Alert.alert("Success!", "Item was added.");
@@ -99,7 +101,9 @@ const CashFlowCreate = ({ navigation }: { navigation: any }) => {
           style={styles.datePicker}
           onPress={() => setShowDatePicker(true)}
         >
-          <Text style={styles.dateText}>{date.toString().slice(4, 15)}</Text>
+          <Text style={styles.dateText}>
+            {moment(date).format("MMMM D, YYYY")}
+          </Text>
         </TouchableOpacity>
         {showDatePicker && (
           <DateTimePicker

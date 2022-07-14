@@ -15,9 +15,9 @@ import { useNavigation } from "@react-navigation/native";
 import { StatusBar } from "expo-status-bar";
 import MaterialIcons from "@expo/vector-icons/MaterialIcons";
 
-import uuid from "react-native-uuid";
-
 import DateTimePicker from "@react-native-community/datetimepicker";
+
+import moment from "moment";
 
 import Context from "../context/Context";
 
@@ -31,7 +31,7 @@ const CashFlowEdit = ({ route }: { route: any }) => {
   const [name, setName] = useState(item.name);
   const [description, setDescription] = useState(item.description);
   const [category, setCategory] = useState(item.category);
-  const [date, setDate] = useState(item.date);
+  const [date, setDate] = useState(new Date(item.date));
   const [showDatePicker, setShowDatePicker] = useState(false);
 
   useLayoutEffect(() => {
@@ -94,7 +94,7 @@ const CashFlowEdit = ({ route }: { route: any }) => {
     });
 
     setExpenses(newExpenses);
-    Alert.alert("Success!", "Item was added.");
+    Alert.alert("Success!", "Item was edited.");
     navigation.navigate("Dashboard");
   };
 
@@ -135,7 +135,9 @@ const CashFlowEdit = ({ route }: { route: any }) => {
           style={styles.datePicker}
           onPress={() => setShowDatePicker(true)}
         >
-          <Text style={styles.dateText}>{date.toString()}</Text>
+          <Text style={styles.dateText}>
+            {moment(date).format("MMMM D, YYYY")}
+          </Text>
         </TouchableOpacity>
         {showDatePicker && (
           <DateTimePicker

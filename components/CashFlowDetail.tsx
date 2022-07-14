@@ -6,6 +6,8 @@ import { useNavigation } from "@react-navigation/native";
 import { StatusBar } from "expo-status-bar";
 import MaterialIcons from "@expo/vector-icons/MaterialIcons";
 
+import moment from "moment";
+
 const CashFlowDetail = ({ route }: { route: any }) => {
   const { item } = route.params;
   const navigation = useNavigation<any>();
@@ -34,7 +36,9 @@ const CashFlowDetail = ({ route }: { route: any }) => {
         ) : (
           <></>
         )}
-        <Text style={styles.expenseDetail}>{item.date}</Text>
+        <Text style={styles.expenseDetail}>
+          {moment(item.date).format("MMMM D, YYYY")}
+        </Text>
       </View>
       <StatusBar style="light" />
     </View>

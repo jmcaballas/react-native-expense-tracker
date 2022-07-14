@@ -9,6 +9,8 @@ import React, { useEffect, useState, useContext } from "react";
 
 import { StatusBar } from "expo-status-bar";
 
+import moment from "moment";
+
 import Context from "../context/Context";
 
 const Dashboard = ({ navigation }: { navigation: any }) => {
@@ -47,7 +49,9 @@ const Dashboard = ({ navigation }: { navigation: any }) => {
                 ) : (
                   <></>
                 )}
-                <Text style={styles.expenseDetail}>{item.date}</Text>
+                <Text style={styles.expenseDetail}>
+                  {moment(item.date).format("MMMM D, YYYY")}
+                </Text>
               </View>
               <View>
                 <Text style={styles.expenseAmount}>
