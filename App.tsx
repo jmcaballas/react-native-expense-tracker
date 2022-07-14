@@ -18,30 +18,30 @@ import Context from "./context/Context";
 
 export default function App() {
   const [expenses, setExpenses] = useState<any>([
-    {
-      id: uuid.v4(),
-      amount: "500",
-      name: "Buffet",
-      description: "Yummy!",
-      category: "Food",
-      date: "2022-07-14T09:09:24.983Z",
-    },
-    {
-      id: uuid.v4(),
-      amount: "200",
-      name: "Grab",
-      description: "Home to Work",
-      category: "Transportation",
-      date: "2022-07-14T09:09:24.983Z",
-    },
-    {
-      id: uuid.v4(),
-      amount: "1000",
-      name: "Globe",
-      description: "",
-      category: "Bills",
-      date: "2022-07-14T09:09:24.983Z",
-    },
+    // {
+    //   id: uuid.v4(),
+    //   amount: "500",
+    //   name: "Buffet",
+    //   description: "Yummy!",
+    //   category: "Food",
+    //   date: "2022-07-14T09:09:24.983Z",
+    // },
+    // {
+    //   id: uuid.v4(),
+    //   amount: "200",
+    //   name: "Grab",
+    //   description: "Home to Work",
+    //   category: "Transportation",
+    //   date: "2022-07-14T09:09:24.983Z",
+    // },
+    // {
+    //   id: uuid.v4(),
+    //   amount: "1000",
+    //   name: "Globe",
+    //   description: "",
+    //   category: "Bills",
+    //   date: "2022-07-14T09:09:24.983Z",
+    // },
   ]);
   const [expenseId, setExpenseId] = useState<any>(null);
 
@@ -99,14 +99,6 @@ export default function App() {
             component={CashFlowDetail}
             options={({ navigation }) => ({
               title: "CashFlowDetail",
-              // headerRight: () => (
-              //   <MaterialIcons
-              //     name="edit"
-              //     size={24}
-              //     color="white"
-              //     onPress={() => navigation.navigate("CashFlowEdit")}
-              //   />
-              // ),
             })}
           />
         </Stack.Navigator>

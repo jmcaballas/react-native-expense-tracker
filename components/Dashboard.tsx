@@ -15,8 +15,8 @@ import Context from "../context/Context";
 
 const Dashboard = ({ navigation }: { navigation: any }) => {
   const [expenses, setExpenses] = useContext(Context);
-
   const [totalExpenses, setTotalExpenses] = useState(0);
+  const [isExpensesEmpty, setIsExpensesEmpty] = useState(true);
 
   const calculateTotalExpenses = () => {
     let total = 0;
@@ -28,11 +28,24 @@ const Dashboard = ({ navigation }: { navigation: any }) => {
 
   useEffect(() => {
     calculateTotalExpenses();
+    if (expenses.length > 0) {
+      setIsExpensesEmpty(false);
+    }
   }, [expenses]);
 
   return (
     <View style={styles.container}>
       <Text style={styles.budget}>Budget: Php {totalExpenses.toFixed(2)}</Text>
+      {isExpensesEmpty ? (
+        <TouchableOpacity
+          style={styles.addBtn}
+          onPress={() => navigation.navigate("CashFlowCreate")}
+        >
+          <Text style={styles.addText}>Create your first entry!</Text>
+        </TouchableOpacity>
+      ) : (
+        <></>
+      )}
       <FlatList
         data={expenses}
         renderItem={({ item }) => (
@@ -94,6 +107,20 @@ const styles = StyleSheet.create({
   },
   expenseAmount: {
     color: "#4ea27f",
+  },
+  addBtn: {
+    borderStyle: "solid",
+    borderWidth: 1,
+    borderRadius: 10,
+    backgroundColor: "#101324",
+    marginHorizontal: 20,
+    marginTop: 20,
+    paddingHorizontal: 15,
+    paddingVertical: 15,
+  },
+  addText: {
+    color: "white",
+    textAlign: "center",
   },
 });
 
