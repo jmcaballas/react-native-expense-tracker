@@ -55,7 +55,7 @@ const Dashboard = ({ navigation }: { navigation: any }) => {
             }
           >
             <View style={styles.expenseContainer}>
-              <View>
+              <View style={styles.expenseContainerLeft}>
                 <Text style={styles.expenseName}>{item.name}</Text>
                 {item.description ? (
                   <Text style={styles.expenseDetail}>{item.description}</Text>
@@ -66,7 +66,7 @@ const Dashboard = ({ navigation }: { navigation: any }) => {
                   {moment(item.date).format("MMMM D, YYYY")}
                 </Text>
               </View>
-              <View>
+              <View style={styles.expenseContainerRight}>
                 <Text style={styles.expenseAmount}>
                   Php {Number(item.amount).toFixed(2)}
                 </Text>
@@ -97,6 +97,7 @@ const styles = StyleSheet.create({
     paddingHorizontal: 20,
     marginBottom: 5,
     flexDirection: "row",
+    // flex: 1,
     justifyContent: "space-between",
   },
   expenseName: {
@@ -107,6 +108,12 @@ const styles = StyleSheet.create({
   },
   expenseAmount: {
     color: "#4ea27f",
+  },
+  expenseContainerLeft: {
+    flex: 4,
+  },
+  expenseContainerRight: {
+    flex: 1,
   },
   addBtn: {
     borderStyle: "solid",
